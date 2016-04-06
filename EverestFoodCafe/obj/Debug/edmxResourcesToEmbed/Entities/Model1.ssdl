@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KathmanduFoodStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EntryDate" Type="date" Nullable="false" />
+    <Property Name="Comments" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="DishID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="DishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DishName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DishCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DishDecription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerLastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactMethod" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FeedBack" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Promotion">
+    <Key>
+      <PropertyRef Name="PromotionId" />
+    </Key>
+    <Property Name="PromotionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PromotionCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Label" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DishID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Comment_Dish1">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="DishID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="DishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Promotion_Dish">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="DishID" />
+      </Principal>
+      <Dependent Role="Promotion">
+        <PropertyRef Name="DishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KathmanduFoodStoreModelStoreContainer">
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comment_Dish1" Association="Self.FK_Comment_Dish1">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Promotion_Dish" Association="Self.FK_Promotion_Dish">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Promotion" EntitySet="Promotion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

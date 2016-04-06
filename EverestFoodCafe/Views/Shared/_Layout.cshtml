@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Kathmandu Food Cafe </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Images/Logo.png" height=50 width=90></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Menu", "Index", "Dishes")
+                    </li>
+                    <li>
+                        @Html.ActionLink("About", "About", "About")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Contact", "Index", "Contact")
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="jumbotron">
+
+        <!-- Main component for a primary marketing message or call to action -->
+
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-xs-12 col-md-8">
+                    <h1>Everest Food Cafe</h1>
+                    <p style="padding:10px;"></p>
+                    <p>
+                        We take inspiration from the World's best cuisines, and create
+                        a unique fusion experience. Our lipsmacking creations will
+                        tickle your culinary senses!
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-2">
+                    <p style="padding:10px;"></p>
+                    <img src="~/Images/Logo.png" class="img-responsive">
+                </div>
+                <div class="col-xs-12 col-md-2">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+
+
+    @*<footer class="col-sm-offset-4 col-sm-6" style="background-color:bisque">
+        @Html.Partial("Footer");
+    </footer>*@
+
+
+    @Scripts.Render("~/bundles/EFC")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

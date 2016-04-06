@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EverestFoodCafe.Domain.Concrete.Dish>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DishName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DishCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DishDecription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DishName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DishCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DishDecription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DishID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DishID })
+        </td>
+    </tr>
+}
+
+</table>

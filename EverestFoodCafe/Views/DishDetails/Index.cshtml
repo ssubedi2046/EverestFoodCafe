@@ -1,0 +1,50 @@
+﻿
+@model  EverestFoodCafe.Domain.Concrete.Dish
+
+<div class="container">
+    
+    <div class="row">
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-left media-middle">
+
+                    <img class="media-object img-thumbnail"
+                         src="~/Images/@Model.Image" alt="Momo" height="450" width="450">
+
+                    
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">
+                        @Model.DishName
+                        <span class="label label-danger">New</span>
+                        <span class="badge">@Model.Price.ToString("C")</span>
+                    </h2>
+
+
+                </div>
+            </li>
+        </ul>
+        <div class="col-sm-6 col-sm-offset-2">
+            <div id="id="UpdateComment">
+                <h4> Comments:</h4>
+
+                @foreach (var c in Model.Comments)
+                {
+                    <blockquote>
+                        <p>@c.Rating Starts</p>
+                        <p>@c.CustomerName</p>
+                        <p>@c.EntryDate.Date.ToShortDateString()</p>
+                        <p>@c.Comments</p>
+                    </blockquote>
+
+                }
+            </div>
+        </div>
+      
+
+    </div>
+    <div class="row">
+        @Html.Partial("CommentView",new ViewDataDictionary { {"id",Model.DishID } } )
+
+    </div>
+    </div>

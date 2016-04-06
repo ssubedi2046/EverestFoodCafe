@@ -1,0 +1,55 @@
+﻿@model  IEnumerable<EverestFoodCafe.Domain.Concrete.Dish>
+
+
+
+<ul class="nav nav-tabs" role="tablist">
+   <li ><a role="tab" href="@Url.Action("Index","Dishes")">The Menu</a></li>
+    <li><a role="tab">The Menu</a></li>
+    <li><a role="tab">The Menu</a></li>
+
+</ul>
+
+        @foreach (var dish in Model)
+        {
+            <div class="row">
+
+
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-left media-middle text-center col-md-9">
+
+                            <div class="col-md-3">
+                                <a href="@Url.Action("Index","DishDetails", new
+                    { id=@dish.DishID})">
+                                    <img class="media-object img-thumbnail" src="~/Images/@dish.Image" height="250" width="250" />
+
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="text-center col-md-5">
+                                    @dish.DishName
+                                    <span class="label label-danger">New</span>
+                                    <span class="badge">@dish.Price.ToString("C")</span>
+
+                                </h4>
+                                <p>@dish.DishDecription</p>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+
+        }
+ 
+
+
