@@ -19,7 +19,7 @@ namespace EverestFoodCafe.Controllers
         public ActionResult Index()
         {
             var model = repository.Dishes.ToList();
-           // model.AllDishes = db.Dishes.ToList();
+           
             
                return View(model);
         }

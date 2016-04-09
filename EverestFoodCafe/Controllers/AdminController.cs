@@ -11,7 +11,7 @@ using EverestFoodCafe.Domain.Concrete;
 
 namespace EverestFoodCafe.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AdminController : Controller
     {
         private IDishesRepository repository;
