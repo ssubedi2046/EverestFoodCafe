@@ -35,7 +35,7 @@ namespace EverestFoodCafe.Domain.Abstract
             }
             else
             {
-              
+                
                context.Entry(dish).State = EntityState.Modified;
             }
            context.SaveChanges();
