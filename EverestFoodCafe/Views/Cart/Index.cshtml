@@ -1,0 +1,54 @@
+﻿@model EverestFoodCafe.Models.CartViewModel
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet"/>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Order Summary</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Qunatity</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>SubTotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Cart.Lines)
+    {
+        <tr>
+            <td>@item.Quantity</td>
+            <td>@item.Dish.DishName</td>
+            <td>@item.Dish.Price.ToString("C")</td>
+            <td>@((item.Quantity*item.Dish.Price).ToString("C"))</td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    @Html.Hidden("dishId", item.Dish.DishID)
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                    <input type="submit" value="RemoveFromCart" class="actionButtons"/>
+                }
+            </td>
+
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <b>Total:</b>
+                @Model.Cart.TotalValue().ToString("C")
+            </td>
+        </tr>
+    </tfoot>
+        
+   
+</table>
+
+<p class="actionButtons"  >
+    <a href="@Model.ReturnUrl" class="actionButtons">ContinueShopping</a>
+    @Html.ActionLink("Checkout now", "Checkout")
+
+</p>

@@ -1,0 +1,24 @@
+﻿@model EverestFoodCafe.Domain.Concrete.Dish
+   <link href="~/Content/Site.css" type="text/css" rel="stylesheet"/> 
+<div class="item ">
+
+    <a href="@Url.Action("Index", "DishDetails", new {id = @Model.DishID})">
+        <img class="media-object img-thumbnail" src="~/Images/@Model.Image" height="250" width="250" />
+
+    </a>
+    @Model.DishName
+    <span class="label label-danger">New</span>
+     <span class="badge">@Model.Price.ToString("C")</span>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            @Html.Hidden("id", Model.DishID)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" value="+ Add to cart" class="actionButtons"/>
+
+
+        }
+       <p>@Model.DishDecription</p>
+    
+</div>
+
+
