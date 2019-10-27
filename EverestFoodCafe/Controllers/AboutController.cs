@@ -8,7 +8,7 @@ namespace EverestFoodCafe.Controllers
 {
     public class AboutController : Controller
     {
-        // GET: About
+        // GET: About this is changes
         public ActionResult About()
         {
             return View();
